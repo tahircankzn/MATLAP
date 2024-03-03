@@ -61,4 +61,59 @@ c1 = double(s1) % kökleri sayısal hale getirdi
 f2 = [-1 2 1 2 6]; % katsayıları yazdık
 c2 = roots(f2)
 
+%%
+% Grafik Çizdirme
+
+% x eksenimiz
+t = 1:0.2:100; % 1 den 100 e kadar 0.2 artarak
+
+% cos = radyan değer , cosd = derece değer
+% 3*t ile 3.*t aynı şey çünkü 3 zaten 1x1 lik ve t de 1x1 , burda normal
+% sayılar kullanıyoruz matris değil o yüzden farketmez ama .* kullanmakta
+% fayda var
+
+ft = 3.*t.*exp(-2.*t).*cosd((4.*t)+30);
+
+% yeni bir grafik sayfası açıyoruz
+figure(1)
+
+plot(t,ft) % x ve y ekseni değerlerini veriyoruz
+
+% x ve y eksenlerinin isimlendirilmesi (isteğe bağlı , görsellik amaçlı)
+xlabel("1 - 100") 
+ylabel("function value")
+
+%% 
+% x^2
+
+step = -10:0.1:10; % bu bir liste aslında [*range(-10,11,0.1)]
+x_kare = step.^2;
+figure(1)
+
+plot(step,x_kare)
+
+%%
+
+% LAPLACE İşlemleri
+
+close all
+clear all
+clc
+
+syms t a 
+% Laplace
+x1 = laplace(t)
+x2 = laplace(t^3)
+x3 = laplace(exp(a*t))
+
+syms s 
+% Ters Laplace
+x4 = ilaplace(s)
+x5 = ilaplace(s^3)
+x6 = ilaplace(1/(s-1))
+x7 = ilaplace(1/((s^2)+1))
+
+
+%%
+% Transfer Fonksiyonu
 
